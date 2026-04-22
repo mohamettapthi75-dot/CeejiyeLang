@@ -50,11 +50,32 @@ This project aims to create a modern, simple, and visually stunning 3D website f
 -   **Seller application**: Sellers must apply and require admin approval.
 -   **Seller dashboard**: Features for adding products, uploading 3 images, setting price, selecting level (High/Medium/Low), and adding descriptions.
 
-### 7. Payment Integration
+### 7. Payment & Delivery System 
 
--   **Payment API integration**: Secure processing of transactions.
--   **Secure webhook system**: Verifies payment before delivering account details.
--   **Account unlock**: Account details are unlocked for the buyer only after successful payment.
+Secure Payment Processing
+All transactions are processed through a trusted payment API.
+
+Payment Verification (Webhook System)
+A secure webhook confirms the payment before any access is granted.
+
+Chat Unlock System (After Payment)
+Once payment is successfully verified, a private chat channel is automatically unlocked between the buyer and the seller.
+
+Secure Information Exchange
+Inside the chat, the seller provides the account details (e.g., login credentials) directly to the buyer in a controlled environment.
+
+Optional Safety Layer (Recommended 🔒)
+Instead of sharing the main email/password directly:
+
+Seller can provide a temporary email or transfer access
+
+Buyer confirms successful login before finalizing
+
+Order Completion Confirmation
+The buyer must confirm that the account works correctly before the order is marked as completed.
+
+Dispute Protection System
+If there is any issue, the buyer can open a dispute, and the admin can review the chat and transaction.
 
 ### 8. Admin Panel
 
@@ -147,3 +168,63 @@ This project aims to create a modern, simple, and visually stunning 3D website f
 -   Clean numbers with small icons, keeping it lightweight and fast.
 
 This structure ensures the platform is clean, scalable, and easy to use while maintaining a premium 3D experience.
+
+
+
+// AI RULES:
+// - Always write clean and structured code
+// - Use small reusable components
+// - Do not mix logic and UI
+// - Use clear naming
+// - Keep code readable and simple
+
+
+
+
+src/
+ ├── components/
+ ├── pages/
+ ├── services/
+ ├── utils/
+ ├── hooks/
+
+
+
+
+
+
+
+## Coding Rules
+
+- Write clean and modular code
+- Use separation of concerns
+- Keep components small
+- Use consistent naming
+- Avoid messy logic
+
+
+// Create a clean React component
+// Use best practices
+// Separate logic and UI
+// Keep it reusable
+
+
+
+# 🔹 Title
+
+## 📌 Explanation
+- point 1
+- point 2
+
+## ⚙️ Steps (if needed)
+1. Step 1
+2. Step 2
+
+## 💡 Example
+(code or example)
+
+## ✅ Summary
+Short clear conclusion
+
+
+
