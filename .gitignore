@@ -1,7 +1,11 @@
-node_modules
+__pycache__/
+*.py[cod]
+*$py.class
 .env
-*.db
-*.log
-dist
-.vscode
-.DS_Store
+.venv
+env/
+venv/
+.ceejiye_history
+dist/
+build/
+*.egg-info/

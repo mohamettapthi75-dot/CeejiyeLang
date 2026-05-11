@@ -1,0 +1,8 @@
+daabac("Ku soo dhawaada CeejiyeLang!")
+magac = geli("Fadlan magacaaga qor: ")
+daabac("Asc,", magac)
+
+hadii magac == "Ceejiye":
+    daabac("Adigu waxaad tahay abuuraha luuqadan!")
+kale:
+    daabac("Waa lagu salaamay!")
