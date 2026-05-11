@@ -1,0 +1,21 @@
+# Xisaabiyaha Fudud (Simple Calculator)
+
+daabac("--- Xisaabiyaha Ceejiye ---")
+
+n1 = tiro(geli("Geli lambarka kowaad: "))
+n2 = tiro(geli("Geli lambarka labaad: "))
+op = geli("Dooro (+, -, *, /): ")
+
+hadii op == "+":
+    daabac("Natiijada:", n1 + n2)
+hadii_kale op == "-":
+    daabac("Natiijada:", n1 - n2)
+hadii_kale op == "*":
+    daabac("Natiijada:", n1 * n2)
+hadii_kale op == "/":
+    hadii n2 != 0:
+        daabac("Natiijada:", n1 / n2)
+    kale:
+        daabac("Qalad: Eber looma qaybin karo!")
+kale:
+    daabac("Qalad: Hawlgalku waa qaldan yahay!")

@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ceejiye"
+version = "1.0.0"
+description = "A Somali language programming language inspired by Python."
+readme = "README.md"
+requires-python = ">=3.7"
+license = {text = "MIT"}
+authors = [
+    {name = "Ceejiye"}
+]
+dependencies = [
+    "click",
+    "rich",
+    "prompt_toolkit",
+    "pygments",
+    "colorama"
+]
+
+[project.scripts]
+ceejiye = "ceejiye.cli:main"

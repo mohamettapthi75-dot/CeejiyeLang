@@ -1,0 +1,10 @@
+# Shaqooyin (Functions)
+
+shaqo salaan(magac):
+    celi "Asc " + magac + ", ku soo dhawaaw CeejiyeLang!"
+
+shaqo isku_dar(a, b):
+    celi a + b
+
+daabac(salaan("Soomaali"))
+daabac("5 + 10 =", isku_dar(5, 10))

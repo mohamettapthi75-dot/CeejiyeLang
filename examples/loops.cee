@@ -1,0 +1,11 @@
+# Wareegyo iyo Liisas (Loops and Lists)
+
+magaalooyin = ["Muqdisho", "Hargeysa", "Garowe", "Kismaayo", "Baydhabo"]
+
+daabac("Magaalooyinka Soomaaliya:")
+wareeg m ku_jira magaalooyin:
+    daabac("- " + m)
+
+daabac("\nLambarrada 1 ilaa 5:")
+wareeg i ku_jira kala_guur(1, 6):
+    daabac("Lambar:", i)

@@ -1,0 +1,18 @@
+# Chatbot yar (Mini Chatbot)
+
+daabac("Bot: Asc! Magacaygu waa CeejiyeBot.")
+
+inta run:
+    fariin = geli("Adiga: ").lower()
+
+    hadii fariin == "asc":
+        daabac("Bot: Wacalaykumusalaam!")
+    hadii_kale "sidee" ku_jira fariin:
+        daabac("Bot: Aad ayaan u fiicanahay, mahadsanid.")
+    hadii_kale "magacaa" ku_jira fariin:
+        daabac("Bot: Magacaygu waa CeejiyeBot, waxaa igu qoray CeejiyeLang.")
+    hadii_kale fariin == "nabad gelyo":
+        daabac("Bot: Nabad gelyo! Kulanti dambe.")
+        jooji
+    kale:
+        daabac("Bot: Ma garanayo waxaad dhihi lahayd, laakiin waan ku baranayaa!")

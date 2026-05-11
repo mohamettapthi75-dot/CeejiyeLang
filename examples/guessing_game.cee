@@ -1,0 +1,19 @@
+# Ciyaarta Qiyaasta (Guessing Game)
+
+sir = 7
+isku_dayo = 0
+
+daabac("--- Ciyaarta Qiyaasta ---")
+daabac("Waxaan qiyaasay lambar u dhexeeya 1 iyo 10.")
+
+inta run:
+    qiyaas = tiro(geli("Qiyaas lambarka: "))
+    isku_dayo = isku_dayo + 1
+
+    hadii qiyaas == sir:
+        daabac("Hambalyo! Waxaad ku heshay", isku_dayo, "isku day.")
+        jooji
+    hadii_kale qiyaas < sir:
+        daabac("Kor u kac...")
+    kale:
+        daabac("Hoos u dhac...")
