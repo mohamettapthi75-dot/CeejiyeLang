@@ -52,7 +52,11 @@ Si aad u gasho meesha koodhka lagu tijaabiyo, qor:
 ```bash
 ceejiye
 ```
-Halkaas waxaad ku qori kartaa koodhkaaga tusaale: `daabac("Asc Soomaaliya")`.
+**Tilmaamaha REPL-ka:**
+- **Taageerada khadadka badan:** Markaad qorto `hadii`, `shaqo`, ama `wareeg` oo aad ku dhammaato `:`, REPL-ku wuxuu ku siinayaa fursad aad ku qorto khadad badan.
+- **Taariikhda koodhka:** Isticmaal fallaadhaha (↑ ↓) si aad u aragto koodhkii aad hore u qortay.
+- **Caawinaad:** Qor `caawi` si aad u aragto ereyada muhiimka ah.
+- **Ka bixitaanka:** Qor `ka_bax` ama `bax` si aad uga baxdo.
 
 ### B. Socodsiinta Faylka (.cee)
 Haddii aad haysato fayl koodh ah oo ku dhammaanaya `.cee`, u socodsii sidatan:

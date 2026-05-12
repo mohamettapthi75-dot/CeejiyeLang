@@ -16,13 +16,30 @@ nooca = type
 xisaab = math
 
 def caawi():
-    print("--- CeejiyeLang Caawinaad ---")
-    print("daabac(...)      - Qoraal soo saar")
-    print("geli(...)       - Macluumaad weydii")
-    print("dherer(...)     - Cabbirka shayga")
-    print("tiro(...)       - Ka dhig tiro (integer)")
-    print("qoraal(...)     - Ka dhig qoraal (string)")
-    print("liis(...)       - Abuur liis")
-    print("qaamuus(...)    - Abuur qaamuus")
-    print("nooca(...)      - Nooca xogta sheeg")
-    print("kala_guur(n)    - 0 ilaa n-1")
+    from rich.console import Console
+    from rich.table import Table
+
+    console = Console()
+    table = Table(title="CeejiyeLang Ereyada Muhiimka ah")
+
+    table.add_column("Soomaali", style="cyan")
+    table.add_column("Python", style="magenta")
+    table.add_column("Sharaxaad", style="green")
+
+    keywords = [
+        ("daabac", "print", "Qoraal soo saar"),
+        ("geli", "input", "Macluumaad weydii"),
+        ("hadii", "if", "Haddii xaalad jirto"),
+        ("kale", "else", "Haddii kale"),
+        ("inta", "while", "Ilaa ay ka dhammaanayso"),
+        ("wareeg", "for", "Ku wareeg liis"),
+        ("shaqo", "def", "Samee function"),
+        ("celi", "return", "Natiijo soo celi"),
+        ("run/been", "True/False", "Xaqiiq ama Been"),
+        ("maran", "None", "Waxba"),
+    ]
+
+    for som, py, desc in keywords:
+        table.add_row(som, py, desc)
+
+    console.print(table)
