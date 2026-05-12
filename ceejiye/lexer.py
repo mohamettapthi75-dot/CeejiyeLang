@@ -7,6 +7,7 @@ KEYWORDS = {
     'inta': 'while',
     'wareeg': 'for',
     'shaqo': 'def',
+    'soo_celi': 'return',
     'celi': 'return',
     'run': 'True',
     'been': 'False',

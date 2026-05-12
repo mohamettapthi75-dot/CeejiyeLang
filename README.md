@@ -78,6 +78,7 @@ Halkan waxaa ku yaal tusaalooyinka ugu muhiimsan si aad u bilowdo:
 | `wareeg` | `for` | Ku wareeg liis |
 | `shaqo` | `def` | Samee function |
 | `celi` | `return` | Natiijo soo celi |
+| `soo_celi` | `return` | Natiijo soo celi |
 | `u_yahay` | `==` | Ma u yahay? |
 | `kama_yahay` | `!=` | Ma ka duwan yahay? |
 | `iyo` | `and` | Iyo |

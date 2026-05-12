@@ -28,3 +28,14 @@ jobs:
     - name: Run tests
       run: |
         python -m pytest
+    - name: 🧪 Run non-interactive examples
+      run: |
+        # Install the package so 'ceejiye' command is available
+        pip install -e .
+        for file in examples/*.cee; do
+          # Skip files that contain 'geli' (input)
+          if ! grep -q "geli" "$file"; then
+            echo "Testing $file..."
+            ceejiye run "$file" || exit 1
+          fi
+        done
