@@ -1,24 +1,32 @@
 [build-system]
-requires = ["setuptools>=42", "wheel"]
+requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "ceejiye"
+name = "ceejiyelang"
 version = "1.0.0"
-description = "A Somali language programming language inspired by Python."
+description = "Luuqadda programming-ka ee Af-Soomaali"
 readme = "README.md"
+license = {file = "LICENSE"}
 requires-python = ">=3.7"
-license = {text = "MIT"}
-authors = [
-    {name = "Ceejiye"}
+keywords = ["somali", "programming-language",
+            "education", "transpiler", "african-languages"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Topic :: Education",
 ]
 dependencies = [
     "click",
     "rich",
     "prompt_toolkit",
     "pygments",
-    "colorama"
+    "colorama",
 ]
 
 [project.scripts]
 ceejiye = "ceejiye.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/mohamettapthi75-dot/CeejiyeLang"
