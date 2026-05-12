@@ -11,10 +11,11 @@ from .pygments_lexer import CeejiyeLexer
 console = Console()
 
 LOGO = """
-╔═══════════════════════════════════════╗
-║          CeejiyeLang v1.0             ║
-║   Luuqadda Programming-ka ee Af-Soomaali║
-╚═══════════════════════════════════════╝
+╔══════════════════════════════════╗
+║   CeejiyeLang v1.0.0 REPL       ║
+║   Ku soo dhawaaw! Qor 'ka_bax'  ║
+║   si aad u baxdo.                ║
+╚══════════════════════════════════╝
 """
 
 class REPL:
@@ -24,21 +25,31 @@ class REPL:
         self.session = PromptSession(history=FileHistory('.ceejiye_history'))
 
     def start(self):
-        console.print(Panel(LOGO, style="bold cyan"))
-        console.print("[yellow]Qor 'bax' si aad uga baxdo, 'caawi' si aad u hesho caawinaad.[/yellow]\n")
+        console.print(LOGO, style="bold cyan")
+        console.print("[yellow]Talo: Qor 'caawi' si aad u aragto ereyada muhiimka ah.[/yellow]\n")
 
         while True:
             try:
                 # Use custom Somali lexer for highlighting
                 text = self.session.prompt("««« ", lexer=PygmentsLexer(CeejiyeLexer))
 
-                if text.strip() == "bax":
+                if text.strip() in ["bax", "ka_bax"]:
                     break
                 if not text.strip():
                     continue
 
-                # Check for multiline (simple colon check)
-                if text.strip().endswith(':'):
+                # Check for multiline keywords followed by colon
+                multiline_keywords = ['hadii', 'haddii', 'shaqo', 'inta', 'markale', 'wareeg', 'loo', 'fasalka', 'isku_day', 'kale', 'hadii_kale', 'khalad', 'qalad', 'qab', 'ugu_dambeyn', 'ugu_dambayn']
+
+                is_multiline = False
+                stripped = text.strip()
+                if stripped.endswith(':'):
+                    for kw in multiline_keywords:
+                        if stripped.startswith(kw):
+                            is_multiline = True
+                            break
+
+                if is_multiline:
                     lines = [text]
                     while True:
                         line = self.session.prompt("... ")
