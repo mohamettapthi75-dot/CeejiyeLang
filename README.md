@@ -38,7 +38,7 @@ bash install.sh
 ### 3. Pip (Habka guud)
 Haddii aad hore u haysato Python iyo Pip:
 ```bash
-pip install .
+pip install git+https://github.com/mohamettapthi75-dot/CeejiyeLang.git
 ```
 
 ---
