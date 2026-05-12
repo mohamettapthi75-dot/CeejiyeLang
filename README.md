@@ -20,8 +20,8 @@ Fur Termux ka dibna qor amaradan:
 ```bash
 pkg update && pkg upgrade -y
 pkg install python git -y
-git clone <URL_KA_REPOSIORY>
-cd ceejiye-lang
+git clone https://github.com/mohamettapthi75-dot/CeejiyeLang
+cd CeejiyeLang
 bash install.sh
 ```
 
@@ -30,8 +30,8 @@ Fur Terminal-ka ka dibna qor:
 ```bash
 sudo apt update
 sudo apt install python3 python3-pip git -y
-git clone <URL_KA_REPOSIORY>
-cd ceejiye-lang
+git clone https://github.com/mohamettapthi75-dot/CeejiyeLang
+cd CeejiyeLang
 bash install.sh
 ```
 

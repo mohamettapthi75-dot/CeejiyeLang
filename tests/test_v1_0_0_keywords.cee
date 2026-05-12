@@ -1,0 +1,30 @@
+# Tijaabi keywords cusub v1.0.0
+
+# 1. Boolean iyo None
+r = run
+b = been
+m = maran
+daabac(r, b, m)
+
+# 2. Power operator
+daabac(2 labajibbaar 3) # Waa inay soo baxdo 8
+
+# 3. Class iyo Pass
+fasalka Tijaabo:
+    la_dhaaf
+
+# 4. Try/Except/Finally
+isku_day:
+    x = 10 / 0
+khalad:
+    daabac("Qalad ayaa dhacay (looma qaybin karo eber)")
+ugu_dambayn:
+    daabac("Dhammaadka isku dayga")
+
+# 5. Range (xaddid)
+wareeg i ku_jira xaddid(2):
+    daabac(i)
+
+# 6. Import (ka_soo_qaado)
+ka_soo_qaado math
+daabac(math.sqrt(16))

@@ -41,6 +41,23 @@ def test_nested_cee():
     output = f.getvalue()
     assert "Deep nesting works!" in output
 
+def test_v1_0_0_keywords_cee():
+    interpreter = Interpreter()
+    filepath = "tests/test_v1_0_0_keywords.cee"
+
+    f = io.StringIO()
+    with contextlib.redirect_stdout(f):
+        interpreter.run_file(filepath)
+
+    output = f.getvalue()
+    assert "True False None" in output
+    assert "8" in output
+    assert "Qalad ayaa dhacay" in output
+    assert "Dhammaadka isku dayga" in output
+    assert "0" in output
+    assert "1" in output
+    assert "4.0" in output
+
 def test_nested_blocks():
     interpreter = Interpreter()
     source = """
