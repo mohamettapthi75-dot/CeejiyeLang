@@ -7,6 +7,7 @@ KEYWORDS = {
     'inta': 'while',
     'wareeg': 'for',
     'shaqo': 'def',
+    'soo_celi': 'return',
     'celi': 'return',
     'run': 'True',
     'been': 'False',
@@ -26,9 +27,15 @@ KEYWORDS = {
     'iyo': 'and',
     'ama': 'or',
     'maaha': 'not',
+    'ma_aha': 'not',
     'ku_jira': 'in',
     'waa': 'is',
     'eber': 'None',
+    'waxba': 'None',
+    'u_yahay': '==',
+    'kama_yahay': '!=',
+    'ku_lacal': '+=',
+    'ka_jar': '-=',
 }
 
 BUILTINS = {
@@ -54,7 +61,9 @@ class Transpiler:
 
         # Regex to match strings, comments, or words
         self.pattern = re.compile(
-            r'(\"\"\"[\s\S]*?\"\"\"|\'\'\'[\s\S]*?\'\'\'|\".*?\"|\'.*?\'|#.*$|\b' + r'\b|\b'.join(map(re.escape, self.sorted_keys)) + r'\b)',
+            r'("""[\s\S]*?"""|\'\'\'[\s\S]*?\'\'\'|' +
+            r'\"(?:\\.|[^\"\\])*\"|\'(?:\\.|[^\'\\])*\'|' +
+            r'#.*$|\b' + r'\b|\b'.join(map(re.escape, self.sorted_keys)) + r'\b)',
             re.MULTILINE
         )
 

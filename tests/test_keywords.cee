@@ -1,0 +1,16 @@
+# Tijaabi in keywords-ka si sax ah loo beddelay
+hadii run:
+    daabac("Hadii wuxuu shaqaynayaa")
+
+# Tijaabi in strings-ka LAMA beddelin
+magac = "hadii"
+daabac(magac)  # Output: hadii (NOT: if)
+
+# Tijaabi comments-ka
+# hadii waa keyword, laakiin halkan ma beddelmin
+
+# Tijaabi function definition
+shaqo tijaabo(x):
+    soo_celi(x * 2)
+natiijo = tijaabo(5)
+daabac(natiijo)  # Output: 10

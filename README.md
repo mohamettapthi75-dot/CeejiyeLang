@@ -1,10 +1,10 @@
-# 🇸🇴 CeejiyeLang v1.0
+# 🇸🇴 CeejiyeLang v1.0.0
 
 **CeejiyeLang** waa luuqad programming oo casri ah, looguna talagalay bilowga (beginners). Waxay ku dhisantahay luuqadda Python, laakiin ereyadeeda muhiimka ah (keywords) waxaa loo beddelay **Af-Soomaali**. Waxaa loogu talagalay inay ardayda Soomaaliyeed meel kasta oo ay joogaan u fududeyso barashada cilmiga Computer-ka.
 
 ```
 ╔═══════════════════════════════════════╗
-║          CeejiyeLang v1.0             ║
+║          CeejiyeLang v1.0.0           ║
 ║   Luuqadda Programming-ka ee Af-Soomaali║
 ╚═══════════════════════════════════════╝
 ```
@@ -78,6 +78,13 @@ Halkan waxaa ku yaal tusaalooyinka ugu muhiimsan si aad u bilowdo:
 | `wareeg` | `for` | Ku wareeg liis |
 | `shaqo` | `def` | Samee function |
 | `celi` | `return` | Natiijo soo celi |
+| `soo_celi` | `return` | Natiijo soo celi |
+| `u_yahay` | `==` | Ma u yahay? |
+| `kama_yahay` | `!=` | Ma ka duwan yahay? |
+| `iyo` | `and` | Iyo |
+| `ama` | `or` | Ama |
+| `ku_lacal` | `+=` | Ku dar oo ku keydi |
+| `ka_jar` | `-=` | Ka jar oo ku keydi |
 
 ### Tusaale Koodh ah:
 ```python

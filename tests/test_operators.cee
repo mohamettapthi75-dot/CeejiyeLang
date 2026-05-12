@@ -1,0 +1,11 @@
+# Tijaabi operators
+hadii 5 u_yahay 5 ama 3 kama_yahay 4:
+    daabac("Operators sax")
+
+y = 10
+y ku_lacal 5
+y ka_jar 2
+daabac(y) # Output: 13
+
+hadii run iyo ma_aha been:
+    daabac("Iyo/Ma-aha sax")
