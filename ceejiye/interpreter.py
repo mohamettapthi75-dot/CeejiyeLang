@@ -50,6 +50,8 @@ def translate_error(exc_type, exc_value, tb):
         if match:
             error_msg = f"Qalad: Variable '{match.group(1)}' lama helin"
     elif type_name == 'SyntaxError':
+        # Use exc_value.lineno directly for SyntaxError as it's more reliable
+        line = getattr(exc_value, 'lineno', line)
         error_msg = f"Qalad: Syntax khaldan line {line}"
     elif type_name == 'ModuleNotFoundError':
         match = re.search(r"No module named '(.+)'", str(exc_value))

@@ -26,9 +26,15 @@ KEYWORDS = {
     'iyo': 'and',
     'ama': 'or',
     'maaha': 'not',
+    'ma_aha': 'not',
     'ku_jira': 'in',
     'waa': 'is',
     'eber': 'None',
+    'waxba': 'None',
+    'u_yahay': '==',
+    'kama_yahay': '!=',
+    'ku_lacal': '+=',
+    'ka_jar': '-=',
 }
 
 BUILTINS = {
@@ -53,8 +59,11 @@ class Transpiler:
         self.sorted_keys = sorted(self.combined_map.keys(), key=len, reverse=True)
 
         # Regex to match strings, comments, or words
+        # Added support for escaped quotes in strings
         self.pattern = re.compile(
-            r'(\"\"\"[\s\S]*?\"\"\"|\'\'\'[\s\S]*?\'\'\'|\".*?\"|\'.*?\'|#.*$|\b' + r'\b|\b'.join(map(re.escape, self.sorted_keys)) + r'\b)',
+            r'(\"\"\"[\s\S]*?\"\"\"|\'\'\'[\s\S]*?\'\'\'|' +
+            r'\"(?:\\.|[^\"\\])*\"|\'(?:\\.|[^\'\\])*\'|' +
+            r'#.*$|\b' + r'\b|\b'.join(map(re.escape, self.sorted_keys)) + r'\b)',
             re.MULTILINE
         )
 

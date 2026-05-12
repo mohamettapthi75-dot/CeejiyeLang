@@ -1,0 +1,34 @@
+# Keywords Test
+hadii run:
+    daabac("Haa")
+kale:
+    daabac("Maya")
+
+hadii run:
+    daabac("Haa")
+hadii_kale been:
+    daabac("Been")
+
+inta been:
+    dhaaf
+
+wareeg i ku_jira kala_guur(3):
+    daabac(i)
+
+shaqo salaam(magac):
+    celi "Asc " + magac
+
+daabac(salaam("User"))
+
+x = eber
+hadii x waa eber:
+    daabac("X waa waxba")
+
+# Operators Test
+hadii 5 u_yahay 5 ama 3 kama_yahay 4:
+    daabac("Operators sax")
+
+y = 10
+y ku_lacal 5
+y ka_jar 2
+daabac(y) # Should be 13
