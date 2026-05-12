@@ -60,9 +60,8 @@ class Transpiler:
         self.sorted_keys = sorted(self.combined_map.keys(), key=len, reverse=True)
 
         # Regex to match strings, comments, or words
-        # Added support for escaped quotes in strings
         self.pattern = re.compile(
-            r'(\"\"\"[\s\S]*?\"\"\"|\'\'\'[\s\S]*?\'\'\'|' +
+            r'("""[\s\S]*?"""|\'\'\'[\s\S]*?\'\'\'|' +
             r'\"(?:\\.|[^\"\\])*\"|\'(?:\\.|[^\'\\])*\'|' +
             r'#.*$|\b' + r'\b|\b'.join(map(re.escape, self.sorted_keys)) + r'\b)',
             re.MULTILINE

@@ -1,10 +1,10 @@
-# 🇸🇴 CeejiyeLang v0.1.0-alpha
+# 🇸🇴 CeejiyeLang v1.0.0
 
 **CeejiyeLang** waa luuqad programming oo casri ah, looguna talagalay bilowga (beginners). Waxay ku dhisantahay luuqadda Python, laakiin ereyadeeda muhiimka ah (keywords) waxaa loo beddelay **Af-Soomaali**. Waxaa loogu talagalay inay ardayda Soomaaliyeed meel kasta oo ay joogaan u fududeyso barashada cilmiga Computer-ka.
 
 ```
 ╔═══════════════════════════════════════╗
-║       CeejiyeLang v0.1.0-alpha        ║
+║          CeejiyeLang v1.0.0           ║
 ║   Luuqadda Programming-ka ee Af-Soomaali║
 ╚═══════════════════════════════════════╝
 ```
