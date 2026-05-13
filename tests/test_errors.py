@@ -12,7 +12,7 @@ def test_syntax_error_line_number():
         interpreter.run_code(source, "test.cee")
 
     output = f.getvalue()
-    assert "Qalad: Syntax khaldan line 1" in output
+    assert "Khalad: Xariiqda 1 — hab-qoraalka ayaa khaldan" in output
     assert "Meesha: test.cee, Line 1" in output
 
 def test_name_error_translation():
@@ -24,4 +24,4 @@ def test_name_error_translation():
         interpreter.run_code(source, "test.cee")
 
     output = f.getvalue()
-    assert "Qalad: Variable 'magac_aan_jirin' lama helin" in output
+    assert "Khalad: Xariiqda 1 — magaca 'magac_aan_jirin' lama aqoonsan" in output
