@@ -36,7 +36,7 @@ def test_repl_multiline_trigger():
 def test_repl_clear_command():
     with patch('ceejiye.repl.PromptSession') as mock_session:
         mock_instance = mock_session.return_value
-        mock_instance.prompt.side_effect = ['gudi', 'ka_bax']
+        mock_instance.prompt.side_effect = ['nadiifi', 'ka_bax']
 
         repl = REPL()
         with patch('click.clear') as mock_clear:

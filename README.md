@@ -1,10 +1,10 @@
-# 🇸🇴 CeejiyeLang v2.0.0
+# 🇸🇴 CeejiyeLang v3.0.0
 
 **CeejiyeLang** waa luuqad programming oo casri ah, looguna talagalay bilowga (beginners). Waxay ku dhisantahay luuqadda Python, laakiin ereyadeeda muhiimka ah (keywords) waxaa loo beddelay **Af-Soomaali**. Waxaa loogu talagalay inay ardayda Soomaaliyeed meel kasta oo ay joogaan u fududeyso barashada cilmiga Computer-ka.
 
 ```
 ╔═══════════════════════════════════════╗
-║          CeejiyeLang v2.0.0           ║
+║          CeejiyeLang v3.0.0           ║
 ║   Luuqadda Programming-ka ee Af-Soomaali║
 ╚═══════════════════════════════════════╝
 ```
@@ -55,14 +55,14 @@ ceejiye
 **Tilmaamaha REPL-ka:**
 - **Taageerada khadadka badan:** Markaad qorto `hadii`, `shaqo`, ama `wareeg` oo aad ku dhammaato `:`, REPL-ku wuxuu ku siinayaa fursad aad ku qorto khadad badan.
 - **Prompt:** REPL-ku wuxuu isticmaalaa `ceeji> ` koodhka caadiga ah iyo `... >` khadadka xiriirka ah.
-- **Nadiifin:** Qor `gudi` si aad u nadiifiso screen-ka.
+- **Nadiifin:** Qor `nadiifi` si aad u nadiifiso screen-ka.
 - **Taariikhda koodhka:** Isticmaal fallaadhaha (↑ ↓) si aad u aragto koodhkii aad hore u qortay.
 - **Caawinaad:** Qor `caawi` si aad u aragto ereyada muhiimka ah.
-- **Ka bixitaanka:** Qor `ka_bax` ama `bax` si aad uga baxdo.
+- **Ka bixitaanka:** Qor `ka_bax` si aad uga baxdo.
 
-### B. Web Playground
+## 🌐 Web Playground
 Waxaad CeejiyeLang ku tijaabin kartaa biraawsarkaaga adigoon waxba rakibin:
-[CeejiyeLang Web Playground](https://mohamettapthi75-dot.github.io/CeejiyeLang/playground/) (Tusaale ahaan - beddel haddii uu jiro link sax ah)
+[CeejiyeLang Web Playground](https://mohamettapthi75-dot.github.io/CeejiyeLang/playground/)
 
 ### C. VS Code Extension
 Si aad u hesho "Syntax Highlighting" gudaha VS Code:

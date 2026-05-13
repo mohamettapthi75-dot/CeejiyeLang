@@ -2,6 +2,7 @@ import sys
 import traceback
 import os
 import re
+import tokenize
 
 # Use absolute import for when run as module, but handle it gracefully
 try:
@@ -12,17 +13,17 @@ except ImportError:
     from std.builtins import caawi
 
 ERROR_MAPPING = {
-    'NameError': 'Variable lama helin',
-    'SyntaxError': 'Syntax khaldan',
-    'TypeError': 'Nooca xogta qaldan',
-    'ValueError': 'Qiimo qaldan',
-    'IndexError': 'Index-ka waa la dhaafay',
-    'KeyError': 'Key-ga lama helin',
+    'NameError': 'Magaca lama aqoonsan (doorsoome lama helin)',
+    'SyntaxError': 'Hab-qoraalka ayaa khaldan',
+    'TypeError': 'Nooca xogta ayaa khaldan',
+    'ValueError': 'Qiimaha xogta ayaa khaldan',
+    'IndexError': 'Tirada booska (index) ayaa ka baxsan xadka',
+    'KeyError': 'Furaha (key) lama helin',
     'ZeroDivisionError': 'Eber looma qaybin karo',
-    'ModuleNotFoundError': 'Module-ka lama helin',
-    'AttributeError': 'Sifada lama helin',
+    'ModuleNotFoundError': 'Qaybta (module) koodhka lama helin',
+    'AttributeError': 'Sifada ama shaqada lama helin',
     'FileNotFoundError': 'Faylka lama helin',
-    'IndentationError': 'Indentation-ka waa qaldan yahay',
+    'IndentationError': 'Meel-fogeynta koodhka (indentation) ayaa khaldan',
 }
 
 def translate_error(exc_type, exc_value, tb):
@@ -34,31 +35,34 @@ def translate_error(exc_type, exc_value, tb):
     if stack:
         filename, line, func, text = stack[-1]
     else:
-        # For SyntaxError, it might not have a traceback in the same way
         filename = getattr(exc_value, 'filename', '<string>')
         line = getattr(exc_value, 'lineno', '?')
 
-    # Clean up filename if it's the internal execution string
-    if filename == '<string>':
-        filename = "Ceejiye"
+    if filename == '<string>': filename = "Ceejiye"
 
-    error_msg = f"Qalad: {somali_type}"
+    error_msg = f"Khalad: Xariiqda {line} — {somali_type}"
+    talo = ""
 
-    # Add more details
+    # Add more details and Somali suggestions
     if type_name == 'NameError':
         match = re.search(r"name '(.+)' is not defined", str(exc_value))
         if match:
-            error_msg = f"Qalad: Variable '{match.group(1)}' lama helin"
+            var_name = match.group(1)
+            error_msg = f"Khalad: Xariiqda {line} — magaca '{var_name}' lama aqoonsan"
+            talo = f"Talo: Hubi inaad u qeexday doorsoome '{var_name}' ka hor isticmaalka."
     elif type_name == 'SyntaxError':
-        # Use exc_value.lineno directly for SyntaxError as it's more reliable
         line = getattr(exc_value, 'lineno', line)
-        error_msg = f"Qalad: Syntax khaldan line {line}"
-    elif type_name == 'ModuleNotFoundError':
-        match = re.search(r"No module named '(.+)'", str(exc_value))
-        if match:
-            error_msg = f"Qalad: Module-ka '{match.group(1)}' lama helin"
+        error_msg = f"Khalad: Xariiqda {line} — hab-qoraalka ayaa khaldan"
+        talo = "Talo: Hubi kolonka (:), qaansooyinka, iyo ereyada muhiimka ah."
+    elif type_name == 'ZeroDivisionError':
+        talo = "Talo: Ha isku dayin inaad tiro u qaybiso eber (0)."
+    elif type_name == 'IndentationError':
+        talo = "Talo: Hubi in koodhku leeyahay meel-fogeyn isku mid ah (4 boos)."
 
-    return error_msg, line
+    full_msg = f"\n{error_msg}"
+    if talo: full_msg += f"\n{talo}"
+
+    return full_msg, line
 
 class Interpreter:
     def __init__(self):
@@ -82,9 +86,22 @@ class Interpreter:
         self.run_code(source, filepath)
 
     def run_code(self, source, filename="<string>"):
-        python_code = self.transpiler.transpile(source)
         try:
-            # compile first to catch SyntaxErrors early
+            from .compiler import Compiler
+            compiler = Compiler()
+            python_code = compiler.compile_to_python(source)
+        except ImportError:
+            # Fallback to transpiler if compiler not found
+            python_code = self.transpiler.transpile(source)
+        except (SyntaxError, IndentationError, tokenize.TokenError):
+            exc_type, exc_value, tb = sys.exc_info()
+            error_msg, line = translate_error(exc_type, exc_value, tb)
+            print(f"\n{error_msg}")
+            if filename != "<string>":
+                print(f"Meesha: {filename}, Line {line}")
+            return
+
+        try:
             code_obj = compile(python_code, filename, 'exec')
             exec(code_obj, self.globals)
         except Exception:

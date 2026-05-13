@@ -12,7 +12,7 @@ console = Console()
 
 LOGO = """
 ╔══════════════════════════════════╗
-║   CeejiyeLang v2.0.0 REPL       ║
+║   CeejiyeLang v3.0.0 REPL       ║
 ║   Ku soo dhawaaw! Qor 'ka_bax'  ║
 ║   si aad u baxdo.                ║
 ╚══════════════════════════════════╝
@@ -26,7 +26,7 @@ class REPL:
 
     def start(self):
         console.print(LOGO, style="bold cyan")
-        console.print("[yellow]Talo: Qor 'caawi' si aad u aragto ereyada muhiimka ah.[/yellow]\n")
+        console.print("[yellow]Qor 'ka_bax' si aad uga baxdo, 'caawi' si aad u hesho caawinaad, 'nadiifi' si aad u nadiifiso screen-ka.[/yellow]\n")
 
         while True:
             try:
@@ -34,11 +34,15 @@ class REPL:
                 text = self.session.prompt("ceeji> ", lexer=PygmentsLexer(CeejiyeLexer))
 
                 stripped = text.strip()
-                if stripped in ["bax", "ka_bax"]:
+                if stripped == "ka_bax":
                     break
-                if stripped == "gudi":
+                if stripped == "nadiifi":
                     import click
                     click.clear()
+                    continue
+                if stripped == "caawi":
+                    from .stdlib import caawi_v3
+                    caawi_v3()
                     continue
                 if not stripped:
                     continue
