@@ -31,11 +31,16 @@ class REPL:
         while True:
             try:
                 # Use custom Somali lexer for highlighting
-                text = self.session.prompt("««« ", lexer=PygmentsLexer(CeejiyeLexer))
+                text = self.session.prompt("ceeji> ", lexer=PygmentsLexer(CeejiyeLexer))
 
-                if text.strip() in ["bax", "ka_bax"]:
+                stripped = text.strip()
+                if stripped in ["bax", "ka_bax"]:
                     break
-                if not text.strip():
+                if stripped == "gudi":
+                    import click
+                    click.clear()
+                    continue
+                if not stripped:
                     continue
 
                 # Check for multiline keywords followed by colon
@@ -52,7 +57,7 @@ class REPL:
                 if is_multiline:
                     lines = [text]
                     while True:
-                        line = self.session.prompt("... ")
+                        line = self.session.prompt("... > ")
                         if not line.strip():
                             break
                         lines.append(line)

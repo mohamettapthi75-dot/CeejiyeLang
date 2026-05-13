@@ -54,11 +54,23 @@ ceejiye
 ```
 **Tilmaamaha REPL-ka:**
 - **Taageerada khadadka badan:** Markaad qorto `hadii`, `shaqo`, ama `wareeg` oo aad ku dhammaato `:`, REPL-ku wuxuu ku siinayaa fursad aad ku qorto khadad badan.
+- **Prompt:** REPL-ku wuxuu isticmaalaa `ceeji> ` koodhka caadiga ah iyo `... >` khadadka xiriirka ah.
+- **Nadiifin:** Qor `gudi` si aad u nadiifiso screen-ka.
 - **Taariikhda koodhka:** Isticmaal fallaadhaha (↑ ↓) si aad u aragto koodhkii aad hore u qortay.
 - **Caawinaad:** Qor `caawi` si aad u aragto ereyada muhiimka ah.
 - **Ka bixitaanka:** Qor `ka_bax` ama `bax` si aad uga baxdo.
 
-### B. Socodsiinta Faylka (.cee)
+### B. Web Playground
+Waxaad CeejiyeLang ku tijaabin kartaa biraawsarkaaga adigoon waxba rakibin:
+[CeejiyeLang Web Playground](https://mohamettapthi75-dot.github.io/CeejiyeLang/playground/) (Tusaale ahaan - beddel haddii uu jiro link sax ah)
+
+### C. VS Code Extension
+Si aad u hesho "Syntax Highlighting" gudaha VS Code:
+1. Nuqul ka samey galka `vscode-ceejiye/`.
+2. Dhig galka extensions-ka ee VS Code (`~/.vscode/extensions/`).
+3. Dib u bilow VS Code.
+
+### D. Socodsiinta Faylka (.cee)
 Haddii aad haysato fayl koodh ah oo ku dhammaanaya `.cee`, u socodsii sidatan:
 ```bash
 ceejiye run examples/calculator.cee
