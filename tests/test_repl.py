@@ -32,3 +32,13 @@ def test_repl_multiline_trigger():
             mock_run.assert_called_once()
             args, _ = mock_run.call_args
             assert 'shaqo test():\ndaabac("Hi")' in args[0]
+
+def test_repl_clear_command():
+    with patch('ceejiye.repl.PromptSession') as mock_session:
+        mock_instance = mock_session.return_value
+        mock_instance.prompt.side_effect = ['gudi', 'ka_bax']
+
+        repl = REPL()
+        with patch('click.clear') as mock_clear:
+            repl.start()
+            mock_clear.assert_called_once()

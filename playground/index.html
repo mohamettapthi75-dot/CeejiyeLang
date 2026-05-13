@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CeejiyeLang Playground</title>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/theme/dracula.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.2/mode/python/python.min.js"></script>
+    <style>
+        body { font-family: sans-serif; margin: 0; display: flex; flex-direction: column; height: 100vh; background: #282a36; color: #f8f8f2; }
+        header { padding: 10px 20px; background: #44475a; display: flex; justify-content: space-between; align-items: center; }
+        .container { display: flex; flex: 1; overflow: hidden; }
+        .editor-container, .output-container { flex: 1; display: flex; flex-direction: column; }
+        .CodeMirror { flex: 1; font-size: 16px; }
+        #output { flex: 1; background: #000; color: #0f0; padding: 10px; font-family: monospace; white-space: pre-wrap; overflow-y: auto; }
+        .controls { padding: 10px; background: #44475a; display: flex; gap: 10px; }
+        button { padding: 8px 16px; cursor: pointer; border: none; border-radius: 4px; background: #6272a4; color: white; font-weight: bold; }
+        button:hover { background: #50fa7b; color: #282a36; }
+        #status { font-size: 12px; color: #bd93f9; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🇸🇴 CeejiyeLang Playground</h1>
+        <div id="status">Loading Pyodide...</div>
+    </header>
+    <div class="container">
+        <div class="editor-container">
+            <textarea id="editor">daabac("Salaan, Adduunka!")
+
+hadii run:
+    daabac("CeejiyeLang wuxuu ka shaqaynayaa biraawsarka!")</textarea>
+            <div class="controls">
+                <button onclick="runCode()">Orod (Run)</button>
+                <button onclick="clearOutput()">Nadiifi (Clear)</button>
+                <button onclick="shareCode()">Wadaag (Share)</button>
+            </div>
+        </div>
+        <div class="output-container">
+            <div id="output"></div>
+        </div>
+    </div>
+
+    <script>
+        let pyodide;
+        const outputElement = document.getElementById('output');
+        const statusElement = document.getElementById('status');
+
+        async function init() {
+            pyodide = await loadPyodide();
+            statusElement.innerText = "Pyodide Ready";
+
+            // Define the transpiler in Python
+            await pyodide.runPythonAsync(`
+import re
+
+KEYWORDS = {
+    'hadii': 'if', 'haddii': 'if', 'kale': 'else', 'hadii_kale': 'elif',
+    'inta': 'while', 'markale': 'while', 'wareeg': 'for', 'loo': 'for',
+    'shaqo': 'def', 'soo_celi': 'return', 'celi': 'return', 'run': 'True',
+    'been': 'False', 'fasalka': 'class', 'keen': 'import', 'ka_soo_qaado': 'import',
+    'jooji': 'break', 'siiwad': 'continue', 'sii_wad': 'continue', 'isku_day': 'try',
+    'qalad': 'except', 'khalad': 'except', 'qab': 'except', 'ugu_dambeyn': 'finally',
+    'ugu_dambayn': 'finally', 'dhaaf': 'pass', 'la_dhaaf': 'pass', 'mar': 'pass',
+    'hubi': 'assert', 'dhal': 'yield', 'kici': 'raise', 'kor_u_qaad': 'raise',
+    'tirtir': 'del', 'guud': 'global', 'iyo': 'and', 'ama': 'or', 'maaha': 'not',
+    'ma_aha': 'is not', 'ku_jira': 'in', 'kuma_jira': 'not in', 'waa': 'is',
+    'eber': 'None', 'waxba': 'None', 'maran': 'None', 'u_yahay': '==',
+    'kama_yahay': '!=', 'ka_weyn': '>', 'ka_yar': '<', 'ka_weyn_ama_lamida': '>=',
+    'ka_yar_ama_lamida': '<=', 'ku_lacal': '+=', 'ka_jar': '-=', 'labajibbaar': '**',
+    'ee': 'as', 'lambar': 'lambda', 'in': 'in', 'nafta': 'self'
+}
+
+BUILTINS = {
+    'daabac': 'print', 'geli': 'input', 'gel': 'input', 'nooc': 'type',
+    'nooca': 'type', 'dherer': 'len', 'tiro': 'int', 'jajab': 'float',
+    'sabbeeye': 'float', 'liis': 'list', 'qoraal': 'str', 'qaamuus': 'dict',
+    'boole': 'bool', 'kala_guur': 'range', 'xidid': 'range', 'xidh': 'range',
+    'xaddid': 'range', 'fur': 'open', 'xir': 'close', 'caawi': 'print', 'xisaab': 'math'
+}
+
+def transpile(source):
+    combined = {**KEYWORDS, **BUILTINS}
+    sorted_keys = sorted(combined.keys(), key=len, reverse=True)
+    pattern = re.compile(
+        r'("""[\\s\\S]*?"""|\\'\\'\\'[\\s\\S]*?\\'\\'\\'|"[^"]*"|\\'[^\\']*\\'|#.*$|\\b' +
+        r'\\b|\\b'.join(map(re.escape, sorted_keys)) + r'\\b)',
+        re.MULTILINE
+    )
+    def replace(match):
+        token = match.group(0)
+        if token.startswith(('"', "'", '#')): return token
+        return combined.get(token, token)
+    return pattern.sub(replace, source)
+            `);
+
+            // Check for code in URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const code = urlParams.get('code');
+            if (code) {
+                editor.setValue(atob(code));
+            }
+        }
+
+        const editor = CodeMirror.fromTextArea(document.getElementById('editor'), {
+            mode: 'python',
+            theme: 'dracula',
+            lineNumbers: true,
+            indentUnit: 4,
+        });
+
+        async function runCode() {
+            if (!pyodide) return;
+            const code = editor.getValue();
+            outputElement.innerText = "";
+
+            try {
+                // Redirect stdout to our output element
+                pyodide.runPython(`
+import sys
+import io
+sys.stdout = io.StringIO()
+                `);
+
+                const transpiled = pyodide.runPython(`transpile(${JSON.stringify(code)})`);
+                await pyodide.runPythonAsync(transpiled);
+
+                const output = pyodide.runPython("sys.stdout.getvalue()");
+                outputElement.innerText = output;
+            } catch (err) {
+                outputElement.innerText = "QALAD:\n" + err;
+            }
+        }
+
+        function clearOutput() {
+            outputElement.innerText = "";
+        }
+
+        function shareCode() {
+            const code = btoa(editor.getValue());
+            const url = window.location.origin + window.location.pathname + "?code=" + code;
+            navigator.clipboard.writeText(url);
+            alert("Xiriirka wadaagga waa la koobiyey!");
+        }
+
+        init();
+    </script>
+</body>
+</html>
