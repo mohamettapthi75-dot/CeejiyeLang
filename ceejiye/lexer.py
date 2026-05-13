@@ -1,3 +1,5 @@
+import tokenize
+import io
 import re
 
 KEYWORDS = {
@@ -58,6 +60,7 @@ KEYWORDS = {
     'ee': 'as',
     'lambar': 'lambda',
     'in': 'in',
+    'nafta': 'self',
 }
 
 BUILTINS = {
@@ -86,12 +89,11 @@ BUILTINS = {
 
 class Transpiler:
     def __init__(self):
-        # Sort keywords by length descending to avoid partial matches
+        # Sort keywords by length descending to avoid partial matches in regex
         self.combined_map = {**KEYWORDS, **BUILTINS}
         self.sorted_keys = sorted(self.combined_map.keys(), key=len, reverse=True)
 
         # Regex to match strings, comments, or words
-        # Robust pattern to handle multi-line strings and escaped quotes
         self.pattern = re.compile(
             r'("""[\s\S]*?"""|\'\'\'[\s\S]*?\'\'\'|' +
             r'\"(?:\\.|[^\"\\])*\"|\'(?:\\.|[^\'\\])*\'|' +
@@ -110,3 +112,8 @@ class Transpiler:
             return self.combined_map.get(token, token)
 
         return self.pattern.sub(replace, source)
+
+    def get_ast(self, source):
+        import ast
+        python_code = self.transpile(source)
+        return ast.parse(python_code)

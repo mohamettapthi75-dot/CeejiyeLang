@@ -1,0 +1,10 @@
+fasalka Baabuur:
+    shaqo __init__(nafta, magac, da):
+        nafta.magac = magac
+        nafta.da = da
+
+    shaqo orod(nafta):
+        daabac(nafta.magac + " wuu ordayaa!")
+
+baabuur1 = Baabuur("Toyota", 2020)
+baabuur1.orod()

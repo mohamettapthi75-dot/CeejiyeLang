@@ -58,6 +58,17 @@ def test_v1_0_0_keywords_cee():
     assert "1" in output
     assert "4.0" in output
 
+def test_classes_cee():
+    interpreter = Interpreter()
+    filepath = "tests/test_classes.cee"
+
+    f = io.StringIO()
+    with contextlib.redirect_stdout(f):
+        interpreter.run_file(filepath)
+
+    output = f.getvalue()
+    assert "Toyota wuu ordayaa!" in output
+
 def test_nested_blocks():
     interpreter = Interpreter()
     source = """

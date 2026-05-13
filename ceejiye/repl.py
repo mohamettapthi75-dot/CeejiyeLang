@@ -12,7 +12,7 @@ console = Console()
 
 LOGO = """
 ╔══════════════════════════════════╗
-║   CeejiyeLang v1.0.0 REPL       ║
+║   CeejiyeLang v2.0.0 REPL       ║
 ║   Ku soo dhawaaw! Qor 'ka_bax'  ║
 ║   si aad u baxdo.                ║
 ╚══════════════════════════════════╝
