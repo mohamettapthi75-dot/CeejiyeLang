@@ -1,0 +1,28 @@
+{
+  "name": "ceejiye-lang",
+  "displayName": "CeejiyeLang",
+  "description": "Somali Programming Language Support",
+  "version": "1.0.0",
+  "publisher": "ceejiye",
+  "engines": {
+    "vscode": "^1.84.0"
+  },
+  "categories": ["Programming Languages"],
+  "contributes": {
+    "languages": [
+      {
+        "id": "ceejiye",
+        "aliases": ["CeejiyeLang", "ceejiye"],
+        "extensions": [".cee"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "ceejiye",
+        "scopeName": "source.ceejiye",
+        "path": "./syntaxes/ceejiye.tmLanguage.json"
+      }
+    ]
+  }
+}

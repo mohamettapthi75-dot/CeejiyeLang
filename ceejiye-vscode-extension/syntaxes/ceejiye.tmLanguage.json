@@ -1,0 +1,87 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "CeejiyeLang",
+  "scopeName": "source.ceejiye",
+  "patterns": [
+    { "include": "#comments" },
+    { "include": "#strings" },
+    { "include": "#keywords" },
+    { "include": "#functions" },
+    { "include": "#numbers" },
+    { "include": "#operators" }
+  ],
+  "repository": {
+    "comments": {
+      "patterns": [
+        {
+          "name": "comment.line.number-sign.ceejiye",
+          "match": "#.*$"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [
+        {
+          "name": "string.quoted.double.ceejiye",
+          "begin": "\"",
+          "end": "\"",
+          "patterns": [
+            {
+              "name": "constant.character.escape.ceejiye",
+              "match": "\\\\."
+            }
+          ]
+        },
+        {
+          "name": "string.quoted.single.ceejiye",
+          "begin": "'",
+          "end": "'"
+        }
+      ]
+    },
+    "keywords": {
+      "patterns": [
+        {
+          "name": "keyword.control.ceejiye",
+          "match": "\\b(hadii|haddii|kale|hadii_kale|inta|markale|wareeg|loo|shaqo|soo_celi|celi|fasalka|keen|ka_soo_qaado|jooji|jebi|siiwad|sii_wad|hakad|isku_day|qalad|khalad|qab|qabso|ugu_dambeyn|ugu_dambayn|dhaaf|la_dhaaf|mar|hubi|dhal|kici|kor_u_qaad|tirtir|guud|ee|lambar|in)\\b"
+        },
+        {
+          "name": "keyword.operator.ceejiye",
+          "match": "\\b(iyo|ama|maaha|ma_aha|u_yahay|kama_yahay|ku_lacal|ka_jar|ku_jira|ku_jir|kuma_jira|waa)\\b"
+        },
+        {
+          "name": "constant.language.ceejiye",
+          "match": "\\b(run|been|waxba|maran)\\b"
+        },
+        {
+          "name": "support.function.ceejiye",
+          "match": "\\b(daabac|geli|gel|nooc|nooca|dherer|tiro|jajab|sabbeeye|liis|qoraal|qaamuus|boole|kala_guur|xidid|xidh|xaddid|fur|xir|caawi|xisaab)\\b"
+        }
+      ]
+    },
+    "functions": {
+      "patterns": [
+        {
+          "name": "entity.name.function.ceejiye",
+          "match": "(?<=shaqo\\s)\\w+"
+        }
+      ]
+    },
+    "numbers": {
+      "patterns": [
+        {
+          "name": "constant.numeric.ceejiye",
+          "match": "\\b\\d+(\\.\\d+)?\\b"
+        }
+      ]
+    },
+    "operators": {
+      "patterns": [
+        {
+          "name": "keyword.operator.ceejiye",
+          "match": "(==|!=|<=|>=|<|>|\\+|-|\\*|/|%|=|\\+=|-=)"
+        }
+      ]
+    }
+  }
+}
