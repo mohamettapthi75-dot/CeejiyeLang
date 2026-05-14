@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CeejiyeLang Playground</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/monaco-editor@0.44.0/min/vs/editor/editor.main.css">
+</head>
+<body>
+    <header>
+        <h1>🇸🇴 CeejiyeLang Playground</h1>
+        <p>Ku tijaabi luuqadda programming-ka ee Af-Soomaaliga</p>
+    </header>
+    <div class="container">
+        <div class="editor-section">
+            <div class="toolbar">
+                <button id="runBtn" class="btn btn-primary">▶️ Fuliso (Run)</button>
+                <button id="transpileBtn" class="btn btn-secondary">🔄 Beddel (Transpile)</button>
+                <button id="shareBtn" class="btn btn-share">🔗 Wadaag (Share)</button>
+                <button id="clearBtn" class="btn btn-danger">🗑️ Tirtir</button>
+            </div>
+            <div id="editor" style="height: 400px;"></div>
+        </div>
+        <div class="output-section">
+            <h3>📤 Natiijada (Output)</h3>
+            <div id="output" class="output-box"></div>
+            <h3>🐍 Python Code</h3>
+            <div id="pythonCode" class="output-box"></div>
+        </div>
+    </div>
+    <style>.btn-share { background: #9c27b0; color: white; }</style>
+    <script src="https://unpkg.com/monaco-editor@0.44.0/min/vs/loader.js"></script>
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

@@ -8,9 +8,11 @@ import tokenize
 try:
     from .lexer import Transpiler
     from .std.builtins import caawi
+    from .stdlib import STDLIB
 except ImportError:
     from lexer import Transpiler
     from std.builtins import caawi
+    from stdlib import STDLIB
 
 ERROR_MAPPING = {
     'NameError': 'Magaca lama aqoonsan (doorsoome lama helin)',
@@ -67,13 +69,17 @@ def translate_error(exc_type, exc_value, tb):
 class Interpreter:
     def __init__(self):
         self.transpiler = Transpiler()
-        import math
         self.globals = {
             '__name__': '__main__',
             '__builtins__': __builtins__,
-            'caawi': caawi,
-            'math': math
+            **STDLIB
         }
+        # Update caawi to use the rich version if available
+        try:
+            from .stdlib import caawi_v3
+            self.globals['caawi'] = caawi_v3
+        except ImportError:
+            self.globals['caawi'] = caawi
 
     def run_file(self, filepath):
         if not os.path.exists(filepath):

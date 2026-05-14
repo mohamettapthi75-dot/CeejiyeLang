@@ -1,0 +1,26 @@
+{
+    "If Statement": {
+        "prefix": "hadii",
+        "body": [
+            "hadii \${1:xaalad}:",
+            "    \${0:dhaaf}"
+        ],
+        "description": "Somali if statement"
+    },
+    "Function Definition": {
+        "prefix": "shaqo",
+        "body": [
+            "shaqo \${1:magaca_shaqada}(\${2:nafta}):",
+            "    \${0:dhaaf}"
+        ],
+        "description": "Somali function definition"
+    },
+    "For Loop": {
+        "prefix": "wareeg",
+        "body": [
+            "wareeg \${1:shay} ku_jira \${2:liis}:",
+            "    \${0:dhaaf}"
+        ],
+        "description": "Somali for loop"
+    }
+}
